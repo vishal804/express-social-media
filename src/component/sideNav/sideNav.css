@@ -1,0 +1,44 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  grid-area: sidebar;
+  padding: 1rem 2rem 1rem 4rem;
+  position: sticky;
+  top: 1rem;
+}
+.sidebar-nav {
+  padding-bottom: 1.5rem;
+}
+.sidebar .sidebar-nav i {
+  padding: 7px;
+}
+
+.top-sidebar {
+  position: sticky;
+  top: 7.5rem;
+}
+
+.buttonlink-style {
+  text-decoration: none;
+}
+
+.bottom-sidebar {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-sidebar i {
+  margin: 0 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    grid-area: sidebar;
+    padding: 1rem 2rem 1rem 4rem;
+    display: none;
+  }
+}

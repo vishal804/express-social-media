@@ -1,0 +1,21 @@
+.nav {
+  position: sticky;
+  top: 0;
+}
+
+.navbar {
+  background-color: var(--background-color);
+}
+
+.right-navbar .btn-style {
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+
+.right-navbar {
+  align-items: center;
+}
+
+.left-navbar {
+  align-items: center;
+}
