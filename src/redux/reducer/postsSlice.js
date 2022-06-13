@@ -108,6 +108,52 @@ export const dislikePost = createAsyncThunk(
   }
 );
 
+export const getBookmarks = createAsyncThunk("posts/getBookmarks", async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get("/api/users/bookmark", {
+      headers: { authorization: token },
+    });
+    return response.data.bookmarks;
+  } catch (error) {
+    console.log("Seems like error", error);
+  }
+});
+
+export const addToBookmarks = createAsyncThunk(
+  "posts/addToBookmarks",
+  async (postId, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `/api/users/bookmark/${postId}`,
+        {},
+        { headers: { authorization: token } }
+      );
+      return response.data.bookmarks;
+    } catch (error) {
+      rejectWithValue("Seems Like error", error);
+    }
+  }
+);
+
+export const removeFromBookmarks = createAsyncThunk(
+  "posts/removeFromBookmarks",
+  async (postId, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `api/users/remove-bookmark/${postId}`,
+        {},
+        { headers: { authorization: token } }
+      );
+      return response.data.bookmarks;
+    } catch (error) {
+      rejectWithValue("Seems Like error", error);
+    }
+  }
+);
+
 const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -174,6 +220,15 @@ const postsSlice = createSlice({
       })
       .addCase(dislikePost.rejected, (state) => {
         state.isLoading = false;
+      })
+      .addCase(getBookmarks.fulfilled, (state, action) => {
+        state.bookmarks = action.payload;
+      })
+      .addCase(addToBookmarks.fulfilled, (state, action) => {
+        state.bookmarks = action.payload;
+      })
+      .addCase(removeFromBookmarks.fulfilled, (state, action) => {
+        state.bookmarks = action.payload;
       });
   },
 });

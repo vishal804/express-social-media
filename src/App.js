@@ -5,7 +5,14 @@ import { useDispatch } from "react-redux";
 import { PrivateRoutes } from "./PrivateRoute";
 import { Routes, Route } from "react-router-dom";
 import { getPosts } from "./redux/reducer/postsSlice";
-import { FeedPage, LandingPage, ProfilePage, Signin, Signup } from "./pages";
+import {
+  BookmarkPage,
+  FeedPage,
+  LandingPage,
+  ProfilePage,
+  Signin,
+  Signup,
+} from "./pages";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +29,7 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route path="/feedpage" element={<FeedPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/bookmark" element={<BookmarkPage />} />
         </Route>
 
         <Route path="/signin" element={<Signin />} />

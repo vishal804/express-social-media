@@ -6,6 +6,8 @@ import {
   deletePost,
   likePost,
   dislikePost,
+  addToBookmarks,
+  removeFromBookmarks,
 } from "../../redux/reducer/postsSlice";
 
 const PostDisplay = ({ postData }) => {
@@ -22,8 +24,9 @@ const PostDisplay = ({ postData }) => {
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
 
+  const { bookmarks } = useSelector((store) => store.posts);
   const { user } = useSelector((store) => store.authentication);
-
+  const isBookmark = bookmarks.some((bookmark) => bookmark._id === _id);
   const isLike = likedBy.some((userOne) => userOne.username === user.username);
 
   return (
@@ -58,10 +61,15 @@ const PostDisplay = ({ postData }) => {
             <i className="far fa-comment fa-lg"></i>
             2K
           </button>
-          <button>
-            <i className="far fa-bookmark fa-lg"></i>
-          </button>
-
+          {isBookmark ? (
+            <button onClick={() => dispatch(removeFromBookmarks(_id))}>
+              <i className="fas fa-bookmark fa-lg"></i>
+            </button>
+          ) : (
+            <button onClick={() => dispatch(addToBookmarks(_id))}>
+              <i className="far fa-bookmark fa-lg"></i>
+            </button>
+          )}
           {user.username === username ? (
             <>
               <button onClick={() => setIsEdit(true)}>

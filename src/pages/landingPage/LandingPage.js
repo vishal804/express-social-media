@@ -9,7 +9,7 @@ const LandingPage = () => {
       <div className="main-container">
         <div className="right-side">
           <div className="title">
-            Welcome to <span className="main-title">Social</span>
+            Welcome to <span className="main-title">Express</span>
           </div>
           <div>
             <p className="sub-title">Connect with the friend</p>
