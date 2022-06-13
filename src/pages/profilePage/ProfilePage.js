@@ -53,11 +53,11 @@ const ProfilePage = () => {
           <section>
             <p className="text-style">Your Posts</p>
 
-            {posts.map((userPost) => {
-              if (userPost.username === user.username) {
-                return <PostDisplay key={userPost._id} postData={userPost} />;
-              }
-            })}
+            {posts.map((userPost) =>
+              userPost.username === user.username ? (
+                <PostDisplay key={userPost._id} postData={userPost} />
+              ) : null
+            )}
           </section>
         </main>
       </div>
