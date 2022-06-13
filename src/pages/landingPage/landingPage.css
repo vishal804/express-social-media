@@ -1,0 +1,49 @@
+.main-container {
+  display: flex;
+  padding: 3rem 0 0 0;
+  text-align: center;
+}
+
+.right-side {
+  flex: 1 1 50%;
+}
+
+.left-side {
+  flex: 1 1 50%;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 2rem 0 15rem 0;
+}
+.main-title {
+  color: var(--primary-color);
+}
+
+.sub-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1rem 0 0 0;
+}
+
+.btn-container {
+  margin: 2rem 7rem 1rem 7rem;
+}
+
+.link-style {
+  margin: 1rem 0 3rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    display: block;
+    height: 100vh;
+    padding: 2rem 0 0 0;
+  }
+  .title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 2rem 0 2rem 0;
+  }
+}

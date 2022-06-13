@@ -1,0 +1,22 @@
+.profile {
+  text-align: center;
+}
+.profile-image {
+  border-radius: 50%;
+}
+
+.followers-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.follow {
+  font-weight: bold;
+}
+.text-style {
+  font-size: 1.2rem;
+  font-weight: 700;
+}

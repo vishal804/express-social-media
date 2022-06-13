@@ -1,0 +1,12 @@
+.feed-container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+      "sidebar main content"
+      "sidebar main content"
+      "sidebar main content";
+  
+    grid-gap: 1rem;
+    margin: 1rem 0 0 0;
+  }
