@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./feedPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { PostDisplay, SideNav } from "../../component";
-import { createPost, getPosts } from "../../redux/reducer/postsSlice";
+import { createPost } from "../../redux/reducer/postsSlice";
 
 const FeedPage = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.authentication);
   const { posts, isLoading } = useSelector((store) => store.posts);
   const [postDetails, setPostDetails] = useState({ content: "" });
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
 
   return (
     <>

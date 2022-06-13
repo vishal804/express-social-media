@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./profilePage.css";
 import { useSelector } from "react-redux";
-import { ProfileEditModal, SideNav } from "../../component";
+import { PostDisplay, ProfileEditModal, SideNav } from "../../component";
 
 const ProfilePage = () => {
   const [isEdit, setIsEdit] = useState(false);
+  const { posts } = useSelector((store) => store.posts);
   const { user } = useSelector((store) => store.authentication);
 
   return (
@@ -51,6 +52,12 @@ const ProfilePage = () => {
 
           <section>
             <p className="text-style">Your Posts</p>
+
+            {posts.map((userPost) => {
+              if (userPost.username === user.username) {
+                return <PostDisplay key={userPost._id} postData={userPost} />;
+              }
+            })}
           </section>
         </main>
       </div>
