@@ -1,28 +1,34 @@
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
-
+import { image1, image2, image3, image4, image5 } from "../../assets";
 /**
  * Posts can be added here.
  * You can add default posts of your wish with different attributes
  * */
 
 export const posts = [
+  //1
   {
     _id: uuid(),
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    firstName: "MS",
+    lastName: "Dhoni",
+    profilePicture: image3,
+    content: "Work on your goals a little bit each day, no matter how small.",
     likes: {
-      likeCount: 0,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
+    username: "msdhoni",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
+        firstName: "Steve",
+        lastName: "Roger",
+        username: "steveroger",
+        profilePicture: image1,
         text: "Interesting",
         votes: {
           upvotedBy: [],
@@ -31,8 +37,11 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        firstName: "Tony",
+        lastName: "Stark",
+        username: "tonystark",
+        profilePicture: image2,
+        text: "Nice",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -40,21 +49,29 @@ export const posts = [
       },
     ],
   },
+
+  //2
+
   {
     _id: uuid(),
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    firstName: "Steve",
+    lastName: "Roger",
+    profilePicture: image1,
+    content: "No shortcut ever gave you what you deserved.",
     likes: {
-      likeCount: 0,
+      likeCount: 11,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
+    username: "steveroger",
 
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
+        firstName: "MS",
+        lastName: "Dhoni",
+        username: "msdhoni",
+        profilePicture: image3,
         text: "Interesting",
         votes: {
           upvotedBy: [],
@@ -63,8 +80,151 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "sohamshah",
+        firstName: "Tony",
+        lastName: "Stark",
+        username: "tonystark",
+        profilePicture: image2,
         text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+
+  //
+
+  {
+    _id: uuid(),
+    firstName: "Stuart",
+    lastName: "Anderwood",
+    profilePicture: image4,
+    content: "A great man is strong because he can be gentle.",
+    likes: {
+      likeCount: 11,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "stuartanderwood",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Steve",
+        lastName: "Roger",
+        username: "steveroger",
+        profilePicture: image1,
+        text: "Nice",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+
+  //
+
+  {
+    _id: uuid(),
+    firstName: "Tony",
+    lastName: "Stark",
+    profilePicture: image2,
+    content: "Work hard then work harder.",
+    likes: {
+      likeCount: 15,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "tonystark",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Steve",
+        lastName: "Roger",
+        username: "steveroger",
+        profilePicture: image1,
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+
+  //
+
+  {
+    _id: uuid(),
+    firstName: "James",
+    lastName: "Patel",
+    profilePicture: image5,
+    content:
+      "Entrepreneur is someone who has a vision for something and a want to create.",
+    likes: {
+      likeCount: 19,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "jamespatel",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Tony",
+        lastName: "Stark",
+        username: "tonystark",
+        profilePicture: image2,
+        text: "Good",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+
+  {
+    _id: uuid(),
+    firstName: "Steve",
+    lastName: "Roger",
+    profilePicture: image1,
+    content: "Ideas are easy. Implementation is hard.",
+    likes: {
+      likeCount: 9,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "steveroger",
+
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Stuart",
+        lastName: "Anderwood",
+        username: "stuartanderwood",
+        profilePicture: image4,
+        text: "Good",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        firstName: "James",
+        lastName: "Patel",
+        username: "jamespatel",
+        profilePicture: image5,
+        text: "Work Holic",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

@@ -1,0 +1,41 @@
+.edit-post {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.editPost-container {
+  margin: 5rem auto;
+  width: 50%;
+  text-align: center;
+  background-color: var(--bg-color);
+}
+.image-textarea {
+  display: flex;
+  width: 100%;
+}
+
+.post-edit-textarea {
+  width: 85%;
+  margin: 1rem;
+  outline: none;
+  resize: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: bolder;
+  overflow: hidden;
+  background-color: var(--bg-color);
+}
+
+.post-edit {
+  display: flex;
+  width: 100%;
+  height: 22vh;
+  align-items: flex-end;
+  flex-direction: column;
+  border: 1px solid rgba(114, 110, 110, 0.19);
+}

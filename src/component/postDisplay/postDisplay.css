@@ -1,0 +1,37 @@
+.post {
+  margin: 2rem 0;
+  border: 1px solid rgba(114, 110, 110, 0.19);
+}
+
+.titlename {
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: bolder;
+  overflow: hidden;
+}
+
+.username {
+  font-size: 0.9rem;
+  margin: 0 0 0 0.5rem;
+  color: var(--subtext-color);
+}
+
+.post-date {
+  margin: 0 0 0 1rem;
+}
+
+.post-content {
+  margin: 0 0 0 5rem;
+}
+
+.post-icons {
+  display: flex;
+  justify-content: space-around;
+}
+.post-icons button {
+  background: none;
+  outline: none;
+  border: none;
+  margin: 1rem 0;
+  cursor: pointer;
+}
