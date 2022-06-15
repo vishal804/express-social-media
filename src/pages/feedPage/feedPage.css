@@ -21,7 +21,7 @@
   align-items: flex-end;
   flex-direction: column;
   border: 1px solid rgba(114, 110, 110, 0.19);
-  background-color: #f4fafa;
+  background-color: var(--secondary-bg-color);
 }
 .image-textarea {
   display: flex;
@@ -45,7 +45,7 @@
   font-size: 1rem;
   font-weight: bolder;
   overflow: hidden;
-  background-color: #f4fafa;
+  background-color: var(--secondary-bg-color);
 }
 
 .sm-navbar {
