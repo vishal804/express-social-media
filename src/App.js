@@ -4,6 +4,7 @@ import { Header } from "./component";
 import { useDispatch } from "react-redux";
 import { PrivateRoutes } from "./PrivateRoute";
 import { Routes, Route } from "react-router-dom";
+import { getUsers } from "./redux/reducer/userSlice";
 import { getPosts } from "./redux/reducer/postsSlice";
 import {
   BookmarkPage,
@@ -19,6 +20,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (

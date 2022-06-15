@@ -1,0 +1,23 @@
+.leftsidebar {
+  position: sticky;
+  top: 7.5rem;
+}
+
+.small-container {
+  background-color: var(--secondary-bg-color);
+  width: 80%;
+}
+.follow-people {
+  display: flex;
+  align-items: center;
+}
+.followbtn-style {
+  margin: 0 0 0 2rem;
+  color: var(--primary-color);
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.leftside-nav-title {
+  margin: 1rem;
+}

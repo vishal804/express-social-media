@@ -56,13 +56,13 @@ const PostDisplay = ({ postData }) => {
           {isLike ? (
             <button onClick={() => dispatch(dislikePost(_id))}>
               <i className="fas fa-heart fa-lg"></i>
-              <span style={{ fontSize: "1rem" }}> {likeCount}</span>
+              <span> {likeCount}</span>
             </button>
           ) : (
             <button onClick={() => dispatch(likePost(_id))}>
               <i className="far fa-heart fa-lg"></i>
 
-              <span style={{ fontSize: "1rem" }}> {likeCount}</span>
+              <span> {likeCount}</span>
             </button>
           )}
 

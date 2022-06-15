@@ -28,6 +28,11 @@
   display: flex;
   justify-content: space-around;
 }
+
+.post-icons span {
+  font-size: 1rem;
+}
+
 .post-icons button {
   background: none;
   outline: none;
