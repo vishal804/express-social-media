@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { getPosts } from "./redux/reducer/postsSlice";
 import {
   BookmarkPage,
+  ExplorePage,
   FeedPage,
   LandingPage,
   ProfilePage,
@@ -28,8 +29,9 @@ function App() {
 
         <Route element={<PrivateRoutes />}>
           <Route path="/feedpage" element={<FeedPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/explore" element={<ExplorePage />} />
           <Route path="/bookmark" element={<BookmarkPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="/signin" element={<Signin />} />
