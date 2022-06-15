@@ -107,6 +107,7 @@ const PostDisplay = ({ postData }) => {
                 <img
                   className="comment-image"
                   src={comment.profilePicture}
+                  alt="Profilepicture"
                 ></img>
                 <div className="comment-content">
                   <p className="comment-titlename">
