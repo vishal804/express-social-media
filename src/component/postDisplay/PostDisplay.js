@@ -68,7 +68,7 @@ const PostDisplay = ({ postData }) => {
 
           <button onClick={ShowComment}>
             <i className="far fa-comment fa-lg"></i>
-            <span> {comments.length}</span>
+            <span> {comments && comments.length}</span>
           </button>
 
           {isBookmark ? (
@@ -101,49 +101,50 @@ const PostDisplay = ({ postData }) => {
           className="comment-section"
           style={showComment ? { display: "block" } : { display: "none" }}
         >
-          {comments.map((comment) => (
-            <div className="comment" key={comment._id}>
-              <div className="comment-profile">
-                <img
-                  className="comment-image"
-                  src={comment.profilePicture}
-                  alt="Profilepicture"
-                ></img>
-                <div className="comment-content">
-                  <p className="comment-titlename">
-                    {comment.firstName} {comment.lastName}
-                  </p>
-                  <p>{comment.text}</p>
+          {comments &&
+            comments.map((comment) => (
+              <div className="comment" key={comment._id}>
+                <div className="comment-profile">
+                  <img
+                    className="comment-image"
+                    src={comment.profilePicture}
+                    alt="Profilepicture"
+                  ></img>
+                  <div className="comment-content">
+                    <p className="comment-titlename">
+                      {comment.firstName} {comment.lastName}
+                    </p>
+                    <p>{comment.text}</p>
+                  </div>
                 </div>
+
+                {comment.username === user.username ? (
+                  <div className="comment-option">
+                    <p onClick={() => setIsCommentEdit(true)}>
+                      <i className="icon-style fas fa-edit"></i>
+                    </p>
+
+                    {isCommentEdit ? (
+                      <CommentEditModal
+                        setIsCommentEdit={setIsCommentEdit}
+                        postId={_id}
+                        commentText={comment}
+                      />
+                    ) : null}
+
+                    <p
+                      onClick={() => {
+                        dispatch(
+                          deleteComment({ postId: _id, commentId: comment._id })
+                        );
+                      }}
+                    >
+                      <i className="icon-style fas fa-trash"></i>
+                    </p>
+                  </div>
+                ) : null}
               </div>
-
-              {comment.username === user.username ? (
-                <div className="comment-option">
-                  <p onClick={() => setIsCommentEdit(true)}>
-                    <i className="icon-style fas fa-edit"></i>
-                  </p>
-
-                  {isCommentEdit ? (
-                    <CommentEditModal
-                      setIsCommentEdit={setIsCommentEdit}
-                      postId={_id}
-                      commentText={comment}
-                    />
-                  ) : null}
-
-                  <p
-                    onClick={() => {
-                      dispatch(
-                        deleteComment({ postId: _id, commentId: comment._id })
-                      );
-                    }}
-                  >
-                    <i className="icon-style fas fa-trash"></i>
-                  </p>
-                </div>
-              ) : null}
-            </div>
-          ))}
+            ))}
 
           <div className="comment-write">
             <input

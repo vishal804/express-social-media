@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./profilePage.css";
 import { useSelector } from "react-redux";
-import { PostDisplay, ProfileEditModal, SideNav } from "../../component";
+import {
+  BottomNav,
+  PostDisplay,
+  ProfileEditModal,
+  SideNav,
+} from "../../component";
 
 const ProfilePage = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -60,6 +65,9 @@ const ProfilePage = () => {
             )}
           </section>
         </main>
+      </div>
+      <div className="bottom-nav-show">
+        <BottomNav />
       </div>
     </>
   );

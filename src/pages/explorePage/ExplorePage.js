@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./explorePage.css";
-import { PostDisplay, SideNav } from "../../component";
 import { useSelector } from "react-redux";
+import { BottomNav, PostDisplay, SideNav } from "../../component";
 
 const ExplorePage = () => {
   const { posts } = useSelector((store) => store.posts);
@@ -40,6 +40,9 @@ const ExplorePage = () => {
               return <PostDisplay key={postData._id} postData={postData} />;
             })}
         </div>
+      </div>
+      <div className="bottom-nav-show">
+        <BottomNav />
       </div>
     </>
   );

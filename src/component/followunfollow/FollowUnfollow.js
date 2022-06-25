@@ -22,22 +22,27 @@ const FollowUnfollow = ({ users, user }) => {
 
         {usersNotFollowed.map((userOne) => (
           <div className="follow-people" key={userOne._id}>
-            <span>
-              <img
-                className="image"
-                src={userOne.profilePicture}
-                alt="ProfilePicture"
-              />
-            </span>
-            {userOne.firstName} {userOne.lastName}
-            <span
+            <div className="follow-person">
+              <p>
+                <img
+                  className="image"
+                  src={userOne.profilePicture}
+                  alt="ProfilePicture"
+                />
+              </p>
+              <p>
+                {userOne.firstName} {userOne.lastName}
+              </p>
+            </div>
+
+            <div
               className="followbtn-style"
               onClick={() => {
                 dispatch(userFollow(userOne._id));
               }}
             >
               Follow
-            </span>
+            </div>
           </div>
         ))}
 
@@ -46,22 +51,27 @@ const FollowUnfollow = ({ users, user }) => {
         <div className="leftside-nav">
           {user.following.map((userOne) => (
             <div className="follow-people" key={userOne._id}>
-              <span>
-                <img
-                  className="image"
-                  src={userOne.profilePicture}
-                  alt="ProfilePicture"
-                />
-              </span>
-              {userOne.firstName} {userOne.lastName}
-              <span
+              <div className="follow-person">
+                <p>
+                  <img
+                    className="image"
+                    src={userOne.profilePicture}
+                    alt="ProfilePicture"
+                  />
+                </p>
+                <p>
+                  {userOne.firstName} {userOne.lastName}
+                </p>
+              </div>
+
+              <div
                 className="followbtn-style"
                 onClick={() => {
                   dispatch(userUnfollow(userOne._id));
                 }}
               >
                 Unfollow
-              </span>
+              </div>
             </div>
           ))}
         </div>
