@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="nav">
+      <header className="navigationbar">
         <nav className="navbar box-shadow">
           <div className="left-navbar">
             <div className="logo">
