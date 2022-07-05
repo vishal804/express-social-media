@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import "./feedPage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { PostDisplay, SideNav } from "../../component";
 import { createPost } from "../../redux/reducer/postsSlice";
+import {
+  BottomNav,
+  FollowUnfollow,
+  PostDisplay,
+  SideNav,
+} from "../../component";
 
 const FeedPage = () => {
   const dispatch = useDispatch();
+  const { users } = useSelector((store) => store.users);
   const { user } = useSelector((store) => store.authentication);
   const { posts, isLoading } = useSelector((store) => store.posts);
   const [postDetails, setPostDetails] = useState({ content: "" });
@@ -15,8 +21,8 @@ const FeedPage = () => {
       <div className="feed-container">
         <SideNav />
         {isLoading ? (
-          <div>
-            <i className="fas fa-sync fa-spin"></i>
+          <div className="loading">
+            <i className="fas fa-sync fa-spin fa-5x"></i>
           </div>
         ) : null}
         <main className="post-container">
@@ -57,6 +63,12 @@ const FeedPage = () => {
               })}
           </div>
         </main>
+        <div className="leftside-nav">
+          <FollowUnfollow users={users} user={user} />
+        </div>
+      </div>
+      <div className="bottom-nav-show">
+        <BottomNav />
       </div>
     </>
   );

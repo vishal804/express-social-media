@@ -1,7 +1,7 @@
 import React from "react";
 import "./bookmarkPage.css";
 import { useSelector } from "react-redux";
-import { PostDisplay, SideNav } from "../../component";
+import { BottomNav, PostDisplay, SideNav } from "../../component";
 
 const BookmarkPage = () => {
   const { bookmarks } = useSelector((store) => store.posts);
@@ -22,6 +22,9 @@ const BookmarkPage = () => {
             <div className="statement">Save Posts for Later</div>
           )}
         </main>
+      </div>
+      <div className="bottom-nav-show">
+        <BottomNav />
       </div>
     </>
   );

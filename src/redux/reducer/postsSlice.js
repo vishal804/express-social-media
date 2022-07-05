@@ -154,6 +154,73 @@ export const removeFromBookmarks = createAsyncThunk(
   }
 );
 
+export const addComment = createAsyncThunk(
+  "posts/addComment",
+  async ({ postId, commentData }, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `/api/comments/add/${postId}`,
+        {
+          commentData,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      return response.data.posts;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const editComment = createAsyncThunk(
+  "posts/editComment",
+  async ({ postId, commentId, commentData }, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `/api/comments/edit/${postId}/${commentId}`,
+        {
+          commentData,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      return response.data.posts;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteComment = createAsyncThunk(
+  "posts/deleteComment",
+  async ({ postId, commentId }, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `/api/comments/delete/${postId}/${commentId}`,
+        {},
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      return response.data.posts;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -229,6 +296,31 @@ const postsSlice = createSlice({
       })
       .addCase(removeFromBookmarks.fulfilled, (state, action) => {
         state.bookmarks = action.payload;
+      })
+
+      .addCase(addComment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addComment.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.posts = action.payload;
+      })
+      .addCase(addComment.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(editComment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editComment.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.posts = action.payload;
+      })
+      .addCase(editComment.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(deleteComment.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.posts = action.payload;
       });
   },
 });

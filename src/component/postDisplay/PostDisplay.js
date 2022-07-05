@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./postDisplay.css";
 import { useDispatch, useSelector } from "react-redux";
-import { PostEditModal } from "../../component";
+import { PostEditModal, CommentEditModal } from "../../component";
 import {
   deletePost,
   likePost,
   dislikePost,
   addToBookmarks,
   removeFromBookmarks,
+  addComment,
+  deleteComment,
 } from "../../redux/reducer/postsSlice";
 
 const PostDisplay = ({ postData }) => {
@@ -19,15 +21,22 @@ const PostDisplay = ({ postData }) => {
     username,
     firstName,
     lastName,
+    comments,
   } = postData;
 
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
-
+  const [isCommentEdit, setIsCommentEdit] = useState(false);
   const { bookmarks } = useSelector((store) => store.posts);
   const { user } = useSelector((store) => store.authentication);
   const isBookmark = bookmarks.some((bookmark) => bookmark._id === _id);
   const isLike = likedBy.some((userOne) => userOne.username === user.username);
+
+  const [comment, setComment] = useState("");
+  const [showComment, setShowComment] = useState(false);
+
+  const ShowComment = () =>
+    showComment ? setShowComment(false) : setShowComment(true);
 
   return (
     <>
@@ -47,20 +56,21 @@ const PostDisplay = ({ postData }) => {
           {isLike ? (
             <button onClick={() => dispatch(dislikePost(_id))}>
               <i className="fas fa-heart fa-lg"></i>
-              <span style={{ fontSize: "1rem" }}> {likeCount}</span>
+              <span> {likeCount}</span>
             </button>
           ) : (
             <button onClick={() => dispatch(likePost(_id))}>
               <i className="far fa-heart fa-lg"></i>
 
-              <span style={{ fontSize: "1rem" }}> {likeCount}</span>
+              <span> {likeCount}</span>
             </button>
           )}
 
-          <button>
+          <button onClick={ShowComment}>
             <i className="far fa-comment fa-lg"></i>
-            2K
+            <span> {comments && comments.length}</span>
           </button>
+
           {isBookmark ? (
             <button onClick={() => dispatch(removeFromBookmarks(_id))}>
               <i className="fas fa-bookmark fa-lg"></i>
@@ -86,6 +96,73 @@ const PostDisplay = ({ postData }) => {
           ) : null}
         </div>
         <hr></hr>
+
+        <div
+          className="comment-section"
+          style={showComment ? { display: "block" } : { display: "none" }}
+        >
+          {comments &&
+            comments.map((comment) => (
+              <div className="comment" key={comment._id}>
+                <div className="comment-profile">
+                  <img
+                    className="comment-image"
+                    src={comment.profilePicture}
+                    alt="Profilepicture"
+                  ></img>
+                  <div className="comment-content">
+                    <p className="comment-titlename">
+                      {comment.firstName} {comment.lastName}
+                    </p>
+                    <p>{comment.text}</p>
+                  </div>
+                </div>
+
+                {comment.username === user.username ? (
+                  <div className="comment-option">
+                    <p onClick={() => setIsCommentEdit(true)}>
+                      <i className="icon-style fas fa-edit"></i>
+                    </p>
+
+                    {isCommentEdit ? (
+                      <CommentEditModal
+                        setIsCommentEdit={setIsCommentEdit}
+                        postId={_id}
+                        commentText={comment}
+                      />
+                    ) : null}
+
+                    <p
+                      onClick={() => {
+                        dispatch(
+                          deleteComment({ postId: _id, commentId: comment._id })
+                        );
+                      }}
+                    >
+                      <i className="icon-style fas fa-trash"></i>
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+            ))}
+
+          <div className="comment-write">
+            <input
+              type="text"
+              value={comment}
+              placeholder="write comment"
+              onChange={(event) => setComment(event.target.value)}
+            ></input>
+            <button
+              onClick={() => {
+                dispatch(addComment({ postId: _id, commentData: comment }));
+                setComment("");
+              }}
+            >
+              comment
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );

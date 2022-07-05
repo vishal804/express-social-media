@@ -3,6 +3,8 @@
 
 :root {
   --bg-color: #f7f7f7;
+  --secondary-bg-color: #f4fafa;
+  --tertiary-bg-color: #ccd0d0;
   --subtext-color: #808080;
 }
 body {

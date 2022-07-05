@@ -1,12 +1,3 @@
-.nav {
-  position: sticky;
-  top: 0;
-}
-
-.navbar {
-  background-color: var(--background-color);
-}
-
 .right-navbar .btn-style {
   margin: 0;
   padding: 0.5rem 1rem;
@@ -18,4 +9,17 @@
 
 .left-navbar {
   align-items: center;
+}
+
+.right-navbar .show {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .right-navbar .show {
+    display: block;
+  }
+  .left-navbar {
+    margin: 0 0 0 1.5rem;
+  }
 }

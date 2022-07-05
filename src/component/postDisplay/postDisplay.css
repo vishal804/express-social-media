@@ -28,10 +28,86 @@
   display: flex;
   justify-content: space-around;
 }
+
+.post-icons span {
+  font-size: 1rem;
+}
+
 .post-icons button {
   background: none;
   outline: none;
   border: none;
   margin: 1rem 0;
   cursor: pointer;
+}
+
+/* Comment Section Style */
+
+.comment-section {
+  margin: 1rem 0 0 0;
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-option {
+  display: flex;
+}
+.icon-style {
+  margin: 0 1rem 0 0;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.comment-write {
+  margin: 1rem 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comment-write input {
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: none;
+  background-color: var(--tertiary-bg-color);
+  height: 2rem;
+  padding: 1rem;
+}
+
+.comment-write button {
+  padding: 0.5rem;
+  background-color: var(--default-color);
+  border: none;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+}
+
+.comment-profile {
+  display: flex;
+}
+
+.comment-profile img {
+  margin: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.comment-titlename {
+  font-weight: bolder;
+}
+
+.comment-profile .titlename {
+  margin: 0;
+}
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.9rem;
 }

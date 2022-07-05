@@ -8,7 +8,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token } = useSelector((store) => store.authentication);
-  const logoutHandler1 = () => {
+  const logoutHandlerOne = () => {
     navigate("/");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -18,13 +18,13 @@ const Header = () => {
 
   const loginHandler = () => {
     if (token) {
-      logoutHandler1();
+      logoutHandlerOne();
     }
   };
 
   return (
     <>
-      <header className="nav">
+      <header className="navigationbar">
         <nav className="navbar box-shadow">
           <div className="left-navbar">
             <div className="logo">
@@ -33,24 +33,30 @@ const Header = () => {
           </div>
 
           <ul className="right-navbar">
-            <li className="no-show">
+            <li>
               {token ? (
                 <Link to="/">
                   <button
-                    className="btn btn-link btn-style"
+                    className="no-show btn btn-link btn-style"
                     onClick={loginHandler}
                   >
                     Logout
                   </button>
+                  <p onClick={loginHandler}>
+                    <i class="show fas fa-sign-out-alt fa-2x"></i>
+                  </p>
                 </Link>
               ) : (
                 <Link to="/signin">
                   <button
-                    className="btn btn-link btn-style"
+                    className="no-show btn btn-link btn-style"
                     onClick={loginHandler}
                   >
                     Login
                   </button>
+                  <p onClick={loginHandler}>
+                    <i class="show fas fa-sign-in-alt fa-2x"></i>
+                  </p>
                 </Link>
               )}
             </li>

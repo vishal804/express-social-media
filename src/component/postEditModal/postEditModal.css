@@ -39,3 +39,10 @@
   flex-direction: column;
   border: 1px solid rgba(114, 110, 110, 0.19);
 }
+
+@media screen and (max-width: 768px) {
+  .editPost-container {
+    margin: 5rem 1rem;
+    width: 91%;
+  }
+}

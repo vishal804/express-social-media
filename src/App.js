@@ -4,9 +4,11 @@ import { Header } from "./component";
 import { useDispatch } from "react-redux";
 import { PrivateRoutes } from "./PrivateRoute";
 import { Routes, Route } from "react-router-dom";
+import { getUsers } from "./redux/reducer/userSlice";
 import { getPosts } from "./redux/reducer/postsSlice";
 import {
   BookmarkPage,
+  ExplorePage,
   FeedPage,
   LandingPage,
   ProfilePage,
@@ -18,6 +20,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (
@@ -28,8 +31,9 @@ function App() {
 
         <Route element={<PrivateRoutes />}>
           <Route path="/feedpage" element={<FeedPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/explore" element={<ExplorePage />} />
           <Route path="/bookmark" element={<BookmarkPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="/signin" element={<Signin />} />
