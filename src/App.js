@@ -3,6 +3,7 @@ import "./App.css";
 import { Header } from "./component";
 import { useDispatch } from "react-redux";
 import { PrivateRoutes } from "./PrivateRoute";
+import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 import { getUsers } from "./redux/reducer/userSlice";
 import { getPosts } from "./redux/reducer/postsSlice";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 }
