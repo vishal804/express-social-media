@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ErrorToast, InfoToast, SuccessToast } from "../../component";
 
 const initialState = {
   posts: [],
@@ -12,7 +13,7 @@ export const getPosts = createAsyncThunk("posts/getPosts", async () => {
     const response = await axios.get("/api/posts");
     return response.data.posts;
   } catch (error) {
-    console.log("Seems like error", error);
+    ErrorToast("Seems like error", error);
   }
 });
 
@@ -26,8 +27,10 @@ export const createPost = createAsyncThunk(
         { postData },
         { headers: { authorization: token } }
       );
+      SuccessToast("New post created");
       return response.data.posts;
     } catch (error) {
+      ErrorToast("Seems Like error", error);
       rejectWithValue("Seems Like error", error);
     }
   }
@@ -43,9 +46,10 @@ export const editPost = createAsyncThunk(
         { postData },
         { headers: { authorization: token } }
       );
-
+      SuccessToast("Post updated");
       return response.data.posts;
     } catch (error) {
+      ErrorToast("Seems Like error", error);
       rejectWithValue("Seems Like error", error);
     }
   }
@@ -59,9 +63,10 @@ export const deletePost = createAsyncThunk(
       const response = await axios.delete(`/api/posts/${postId}`, {
         headers: { authorization: token },
       });
-
+      SuccessToast("Post deleted");
       return response.data.posts;
     } catch (error) {
+      ErrorToast("Seems Like error", error);
       rejectWithValue("Seems Like error", error);
     }
   }
@@ -116,7 +121,7 @@ export const getBookmarks = createAsyncThunk("posts/getBookmarks", async () => {
     });
     return response.data.bookmarks;
   } catch (error) {
-    console.log("Seems like error", error);
+    ErrorToast("Seems like error", error);
   }
 });
 
@@ -130,8 +135,10 @@ export const addToBookmarks = createAsyncThunk(
         {},
         { headers: { authorization: token } }
       );
+      InfoToast("Post bookmarked");
       return response.data.bookmarks;
     } catch (error) {
+      ErrorToast("Seems like error", error);
       rejectWithValue("Seems Like error", error);
     }
   }
@@ -147,8 +154,10 @@ export const removeFromBookmarks = createAsyncThunk(
         {},
         { headers: { authorization: token } }
       );
+      InfoToast("Post removed from Bookmark");
       return response.data.bookmarks;
     } catch (error) {
+      ErrorToast("Seems like error", error);
       rejectWithValue("Seems Like error", error);
     }
   }

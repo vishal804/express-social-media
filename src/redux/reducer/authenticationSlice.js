@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ErrorToast, SuccessToast } from "../../component";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -15,9 +16,11 @@ export const loginHandler = createAsyncThunk(
         username,
         password,
       });
+      SuccessToast("Login successful");
       return response.data;
     } catch (error) {
-      return rejectWithValue("username or password is incorrect");
+      ErrorToast("Invalid username and password", error);
+      return rejectWithValue("Invalid username and password");
     }
   }
 );
@@ -36,8 +39,10 @@ export const signupHandler = createAsyncThunk(
         firstName,
         lastName,
       });
+      SuccessToast("Login successful");
       return response.data;
     } catch (error) {
+      ErrorToast("Email already exist", error);
       return rejectWithValue("Email already exist");
     }
   }
@@ -57,9 +62,11 @@ export const updateHandler = createAsyncThunk(
           headers: { authorization: token },
         }
       );
+      SuccessToast("Profile updated successfully");
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue("Can not Update");
+      ErrorToast("Can not update profile", error);
+      return thunkAPI.rejectWithValue("Can not update profile");
     }
   }
 );
@@ -78,9 +85,11 @@ export const userFollow = createAsyncThunk(
           },
         }
       );
+      SuccessToast("Started following");
       return response.data.followUser;
     } catch (error) {
-      return rejectWithValue(error);
+      ErrorToast("Can not follow", error);
+      return rejectWithValue("Can not follow", error);
     }
   }
 );
@@ -99,9 +108,11 @@ export const userUnfollow = createAsyncThunk(
           },
         }
       );
+      SuccessToast("Removed from following");
       return response.data.followUser;
     } catch (error) {
-      return rejectWithValue(error);
+      ErrorToast("Can not unfollow", error);
+      return rejectWithValue("Can not unfollow", error);
     }
   }
 );
