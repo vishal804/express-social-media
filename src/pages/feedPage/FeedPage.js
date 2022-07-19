@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../redux/reducer/postsSlice";
 import {
   BottomNav,
+  ErrorToast,
   FollowUnfollow,
   PostDisplay,
   SideNav,
@@ -15,6 +16,15 @@ const FeedPage = () => {
   const { user } = useSelector((store) => store.authentication);
   const { posts, isLoading } = useSelector((store) => store.posts);
   const [postDetails, setPostDetails] = useState({ content: "" });
+
+  const handleCreatePost = () => {
+    if (postDetails.content.trim() === "") {
+      ErrorToast("Can't create empty post");
+    } else {
+      dispatch(createPost(postDetails));
+      setPostDetails({ content: "" });
+    }
+  };
 
   return (
     <>
@@ -46,10 +56,7 @@ const FeedPage = () => {
             <div className="sm-navbar">
               <button
                 className="btn btn-primary btn-style"
-                onClick={() => {
-                  dispatch(createPost(postDetails));
-                  setPostDetails({ content: "" });
-                }}
+                onClick={handleCreatePost}
               >
                 Express
               </button>
