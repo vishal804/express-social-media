@@ -36,3 +36,7 @@
 .btn-lg {
   padding: 0.7rem;
 }
+
+.error-message {
+  color: var(--toastify-color-error);
+}
