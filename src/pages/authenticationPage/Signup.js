@@ -31,6 +31,7 @@ const Signup = () => {
             firstName: "",
             email: "",
             password: "",
+            acceptTerms: false,
           }}
           validate={(values) => {
             const errors = {};
@@ -53,7 +54,9 @@ const Signup = () => {
               errors.confirmPassword =
                 "Password and confirm password doesn't match";
             }
-
+            if (values.acceptTerms === false) {
+              errors.acceptTerms = "Accept Terms & Conditions is required";
+            }
             return errors;
           }}
         >
@@ -153,9 +156,14 @@ const Signup = () => {
                 </div>
 
                 <div className="login-store flex flex-space-between">
-                  <label htmlFor="store">
-                    <input type="checkbox" required />I accept all terms &
-                    conditions
+                  <label htmlFor="acceptTerms">
+                    <Field type="checkbox" name="acceptTerms" />I accept all
+                    terms & conditions
+                    <ErrorMessage
+                      className="error-message"
+                      name="acceptTerms"
+                      component="div"
+                    />
                   </label>
                 </div>
               </div>
