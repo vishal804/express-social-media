@@ -154,6 +154,7 @@ const PostDisplay = ({ postData }) => {
               onChange={(event) => setComment(event.target.value)}
             ></input>
             <button
+              disabled={comment.trim() === ""}
               onClick={() => {
                 dispatch(addComment({ postId: _id, commentData: comment }));
                 setComment("");
