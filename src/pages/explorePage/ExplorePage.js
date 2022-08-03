@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./explorePage.css";
 import { useSelector } from "react-redux";
 import { BottomNav, PostDisplay, SideNav } from "../../component";
@@ -8,6 +8,10 @@ const ExplorePage = () => {
   let showPosts = posts;
   const [sortBy, setSortBy] = useState(showPosts);
   const latestPost = [...showPosts].reverse();
+
+  useEffect(() => {
+    setSortBy(posts);
+  }, [posts]);
 
   return (
     <>
