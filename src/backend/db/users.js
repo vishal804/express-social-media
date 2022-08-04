@@ -35,7 +35,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePicture: image1,
-    link: "steveroger.com",
+    link: "https://www.google.com/",
     bio: "Software Developer|Cricket Lover|Works @company",
     followers: [],
     following: [],

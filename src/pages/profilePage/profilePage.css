@@ -21,3 +21,11 @@
   font-size: 1.2rem;
   font-weight: 700;
 }
+
+.website {
+  margin: 1rem;
+}
+
+.user-website {
+  color: var(--primary-color);
+}

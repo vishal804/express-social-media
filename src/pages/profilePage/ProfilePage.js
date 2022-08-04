@@ -38,14 +38,29 @@ const ProfilePage = () => {
               Edit Profile
             </button>
             <p>{user.bio}</p>
-            <p style={{ margin: "1rem" }}>{user.link}</p>
+            <p className="website">
+              <a
+                rel="noreferrer"
+                className="user-website"
+                target="_blank"
+                href={user.link}
+              >
+                {user.link}
+              </a>
+            </p>
             <div className="followers-details">
               <div>
                 <p className="follow">{user.following.length}</p>
                 <p>Following</p>
               </div>
               <div>
-                <p className="follow">2k</p>
+                <p className="follow">
+                  {
+                    posts.filter(
+                      (userPost) => userPost.username === user.username
+                    ).length
+                  }
+                </p>
                 <p>Posts</p>
               </div>
               <div>
@@ -58,11 +73,13 @@ const ProfilePage = () => {
           <section>
             <p className="text-style">Your Posts</p>
 
-            {posts.map((userPost) =>
-              userPost.username === user.username ? (
-                <PostDisplay key={userPost._id} postData={userPost} />
-              ) : null
-            )}
+            {[...posts]
+              .reverse()
+              .map((userPost) =>
+                userPost.username === user.username ? (
+                  <PostDisplay key={userPost._id} postData={userPost} />
+                ) : null
+              )}
           </section>
         </main>
       </div>
