@@ -11,6 +11,7 @@ const Signup = () => {
   const { token } = useSelector((store) => store.authentication);
   const [showPassword, setShowPassword] = useState(false);
 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   useEffect(() => {
     if (token) {
       navigate("/feedpage");
@@ -132,7 +133,6 @@ const Signup = () => {
                   />
                   <div
                     className="show-password"
-                    id="show-create-password"
                     onClick={() => {
                       setShowPassword(!showPassword);
                     }}
@@ -155,15 +155,14 @@ const Signup = () => {
                   <Field
                     id="confirm-password"
                     className="input"
-                    type={showPassword ? "text" : "password"}
+                    type={showConfirmPassword ? "text" : "password"}
                     placeholder="Enter Password"
                     name="confirmPassword"
                   />
                   <div
                     className="show-password"
-                    id="show-create-password"
                     onClick={() => {
-                      setShowPassword(!showPassword);
+                      setShowConfirmPassword(!showConfirmPassword);
                     }}
                   >
                     show
