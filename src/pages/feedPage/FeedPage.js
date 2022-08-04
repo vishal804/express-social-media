@@ -29,7 +29,7 @@ const FeedPage = () => {
 
           <div>
             {posts.length !== 0 &&
-              posts.map((postData) => {
+              [...posts].reverse().map((postData) => {
                 return <PostDisplay key={postData._id} postData={postData} />;
               })}
           </div>
