@@ -11,6 +11,7 @@ const Signup = () => {
   const { token } = useSelector((store) => store.authentication);
   const [showPassword, setShowPassword] = useState(false);
 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   useEffect(() => {
     if (token) {
       navigate("/feedpage");
@@ -29,6 +30,7 @@ const Signup = () => {
             username: "",
             confirmPassword: "",
             firstName: "",
+            lastName: "",
             email: "",
             password: "",
             acceptTerms: false,
@@ -39,7 +41,9 @@ const Signup = () => {
             if (!values.firstName.trim()) {
               errors.firstName = "Required";
             }
-
+            if (!values.lastName.trim()) {
+              errors.lastName = "Required";
+            }
             if (!values.username.trim()) {
               errors.username = "Required";
             }
@@ -66,17 +70,34 @@ const Signup = () => {
 
               <div>
                 <label htmlFor="name" className="form-label">
-                  Name
+                  Firstname
                 </label>
                 <Field
                   className="input"
                   type="text"
-                  placeholder="Enter Name"
+                  placeholder="Enter Firstname"
                   name="firstName"
                 />
                 <ErrorMessage
                   className="error-message"
                   name="firstName"
+                  component="div"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="lastName" className="form-label">
+                  Surname
+                </label>
+                <Field
+                  className="input"
+                  type="text"
+                  placeholder="Enter Surname"
+                  name="lastName"
+                />
+                <ErrorMessage
+                  className="error-message"
+                  name="lastName"
                   component="div"
                 />
               </div>
@@ -112,7 +133,6 @@ const Signup = () => {
                   />
                   <div
                     className="show-password"
-                    id="show-create-password"
                     onClick={() => {
                       setShowPassword(!showPassword);
                     }}
@@ -135,15 +155,14 @@ const Signup = () => {
                   <Field
                     id="confirm-password"
                     className="input"
-                    type={showPassword ? "text" : "password"}
+                    type={showConfirmPassword ? "text" : "password"}
                     placeholder="Enter Password"
                     name="confirmPassword"
                   />
                   <div
                     className="show-password"
-                    id="show-create-password"
                     onClick={() => {
-                      setShowPassword(!showPassword);
+                      setShowConfirmPassword(!showConfirmPassword);
                     }}
                   >
                     show

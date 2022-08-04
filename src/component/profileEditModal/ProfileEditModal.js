@@ -27,6 +27,7 @@ const ProfileEditModal = ({ setIsEdit, user }) => {
               className="input"
               type="text"
               value={userData.firstName}
+              placeholder="Enter Firstname"
               onChange={(event) =>
                 setUserData({ ...userData, firstName: event.target.value })
               }
@@ -35,6 +36,7 @@ const ProfileEditModal = ({ setIsEdit, user }) => {
               className="input"
               type="text"
               value={userData.lastName}
+              placeholder="Enter Surname"
               onChange={(event) =>
                 setUserData({ ...userData, lastName: event.target.value })
               }
@@ -44,6 +46,7 @@ const ProfileEditModal = ({ setIsEdit, user }) => {
             <textarea
               className="input"
               value={userData.bio}
+              placeholder="Enter bio"
               onChange={(event) =>
                 setUserData({ ...userData, bio: event.target.value })
               }
@@ -54,6 +57,7 @@ const ProfileEditModal = ({ setIsEdit, user }) => {
               className="input"
               type="text"
               value={userData.link}
+              placeholder="Enter website"
               onChange={(event) =>
                 setUserData({ ...userData, link: event.target.value })
               }
