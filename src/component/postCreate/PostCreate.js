@@ -15,6 +15,8 @@ const PostCreate = ({ isCreatePost, setIsCreatePost }) => {
     } else {
       dispatch(createPost(postDetails));
       setPostDetails({ content: "" });
+    }
+    if (isCreatePost === true) {
       setIsCreatePost(false);
     }
   };
