@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { BottomNav, PostDisplay, SideNav } from "../../component";
 
 const BookmarkPage = () => {
-  const { bookmarks } = useSelector((store) => store.posts);
+  const { bookmarks, posts } = useSelector((store) => store.posts);
+  const bookmarkPosts = posts.filter(({ _id }) => bookmarks.includes(_id));
 
   return (
     <>
@@ -13,8 +14,8 @@ const BookmarkPage = () => {
         <main className="post-container">
           {bookmarks.length !== 0 ? (
             <>
-              {bookmarks &&
-                bookmarks.map((postData) => {
+              {bookmarkPosts &&
+                bookmarkPosts.map((postData) => {
                   return <PostDisplay key={postData._id} postData={postData} />;
                 })}
             </>
