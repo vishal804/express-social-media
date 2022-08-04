@@ -29,6 +29,7 @@ const Signup = () => {
             username: "",
             confirmPassword: "",
             firstName: "",
+            lastName: "",
             email: "",
             password: "",
             acceptTerms: false,
@@ -39,7 +40,9 @@ const Signup = () => {
             if (!values.firstName.trim()) {
               errors.firstName = "Required";
             }
-
+            if (!values.lastName.trim()) {
+              errors.lastName = "Required";
+            }
             if (!values.username.trim()) {
               errors.username = "Required";
             }
@@ -66,17 +69,34 @@ const Signup = () => {
 
               <div>
                 <label htmlFor="name" className="form-label">
-                  Name
+                  Firstname
                 </label>
                 <Field
                   className="input"
                   type="text"
-                  placeholder="Enter Name"
+                  placeholder="Enter Firstname"
                   name="firstName"
                 />
                 <ErrorMessage
                   className="error-message"
                   name="firstName"
+                  component="div"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="lastName" className="form-label">
+                  Surname
+                </label>
+                <Field
+                  className="input"
+                  type="text"
+                  placeholder="Enter Surname"
+                  name="lastName"
+                />
+                <ErrorMessage
+                  className="error-message"
+                  name="lastName"
                   component="div"
                 />
               </div>
