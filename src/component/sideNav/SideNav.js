@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./sideNav.css";
 import { Link } from "react-router-dom";
+import { PostCreate } from "../postCreate/PostCreate";
 
 const SideNav = () => {
+  const [isCreatePost, setIsCreatePost] = useState(false);
   return (
     <>
+      {isCreatePost ? (
+        <div className="post-write-modal">
+          <div className="post-write-container">
+            <PostCreate
+              isCreatePost={isCreatePost}
+              setIsCreatePost={setIsCreatePost}
+            />
+          </div>
+        </div>
+      ) : null}
       <div className="sidebar">
         <div className="top-sidebar">
           <div className="sidebar-nav">
@@ -42,9 +54,15 @@ const SideNav = () => {
               Profile
             </Link>
           </div>
-          <Link to="/feedpage" className="buttonlink-style">
-            <button className="btn btn-primary btn-lg">Create New Post</button>
-          </Link>
+
+          <div>
+            <button
+              className="btn btn-primary btn-lg"
+              onClick={() => setIsCreatePost(true)}
+            >
+              Create New Post
+            </button>
+          </div>
         </div>
       </div>
     </>
