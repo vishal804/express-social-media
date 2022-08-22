@@ -29,7 +29,8 @@ const PostDisplay = ({ postData }) => {
   const [isCommentEdit, setIsCommentEdit] = useState(false);
   const { bookmarks } = useSelector((store) => store.posts);
   const { user } = useSelector((store) => store.authentication);
-  const isBookmark = bookmarks.some((bookmarkId) => bookmarkId === _id);
+  const isBookmark =
+    bookmarks && bookmarks.some((bookmarkId) => bookmarkId === _id);
   const isLike = likedBy.some((userOne) => userOne.username === user.username);
 
   const [comment, setComment] = useState("");
