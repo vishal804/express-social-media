@@ -44,8 +44,12 @@ const Signup = () => {
             if (!values.lastName.trim()) {
               errors.lastName = "Required";
             }
-            if (!values.username.trim()) {
+            if (!values.username) {
               errors.username = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)
+            ) {
+              errors.username = "Invalid email address";
             }
             if (!values.password.trim()) {
               errors.password = "Required";
@@ -104,12 +108,12 @@ const Signup = () => {
 
               <div>
                 <label htmlFor="email" className="form-label">
-                  Email or Username
+                  Email
                 </label>
                 <Field
                   className="input"
                   type="text"
-                  placeholder="Enter Email or Username"
+                  placeholder="Enter Email"
                   name="username"
                 />
                 <ErrorMessage
